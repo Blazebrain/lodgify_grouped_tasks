@@ -41,7 +41,7 @@ class TasksView extends StatelessWidget {
                   )
                 : Padding(
                     padding:
-                        EdgeInsets.symmetric(horizontal: 24.w, vertical: 24.h),
+                        EdgeInsets.symmetric(horizontal: 24, vertical: 24.h),
                     child: Align(
                       alignment: Alignment.center,
                       child: Container(
@@ -55,7 +55,7 @@ class TasksView extends StatelessWidget {
                           ),
                         ),
                         padding: EdgeInsets.symmetric(
-                          horizontal: 24.w,
+                          horizontal: 24,
                           vertical: 32.h,
                         ),
                         child: SingleChildScrollView(
@@ -97,7 +97,7 @@ class TasksView extends StatelessWidget {
                                               ? viewModel
                                                       .progressValueInPercentage *
                                                   (size.width - 180.w)
-                                              : 40.w,
+                                              : 40,
                                           child: Text(
                                             '${viewModel.progressValue.toInt()}%',
                                             style: TextStyle(

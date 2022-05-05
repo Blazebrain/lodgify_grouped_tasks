@@ -58,7 +58,7 @@ class TaskGroupDisplayWidget extends StatelessWidget {
                         ? Icons.keyboard_arrow_up
                         : Icons.keyboard_arrow_down,
                     color: AppColors.greyColor,
-                    size: 20.w,
+                    size: 20,
                   ),
                 ],
               ),
