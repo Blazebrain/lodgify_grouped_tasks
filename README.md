@@ -1,8 +1,8 @@
-# lodgify Grouped Tasks
+# Lodgify Grouped Tasks
 
 Lodgify Grouped Tasks is a product offered by Lodgify, a company focused on building direct channel technology which empowers vacation rental owners and property managers to create a professional website and grow direct bookings, free from commissions. 
 
-## Brief Desciption
+## Brief Description
 Lodgify Grouped Tasks is built to enable the smooth coordination and management of assigned tasks within Lodgify. Supported by a robust API endpoint, it fetches a list of tasks which as been laid down in a particular time period. The endpoint returns the tasks in various states: Completed and Uncompleted Tasks. It has a progress loader which displays the current state of the Task Manager, taking the current state of all the tasks into consideration. When a task is marked done, it updates the state of the loader and increases it's value. The scalar value for this increase is gotten by getting the normalized value for the increase.
 
 ## Architectural Pattern Used
