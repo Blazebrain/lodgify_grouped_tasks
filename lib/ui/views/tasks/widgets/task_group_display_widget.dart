@@ -63,8 +63,8 @@ class TaskGroupDisplayWidget extends StatelessWidget {
                 ],
               ),
               leading: viewModel.listOfGroupsWithAllTasksChecked.contains(group)
-                  ? Image.asset(PngAssets.clipboardDoneImage)
-                  : Image.asset(PngAssets.clipboardImage),
+                  ? Image.asset(PngAssets.completedTaskGroupImage)
+                  : Image.asset(PngAssets.unCompletedTaskGroupImage),
               onExpansionChanged: (value) {
                 viewModel.updatedValue(value, index);
               },

@@ -70,6 +70,10 @@ class TasksViewModel extends BaseViewModel {
           log.i('progressValue: $progressValue');
         }
       }
+      // Updates the color of the groups, this is necessary
+      // because some groups have all their tasks checked right
+      // from start and we need to change their color to [AppColors.green].
+      updateGroupColor(taskGroup);
     }
   }
 
