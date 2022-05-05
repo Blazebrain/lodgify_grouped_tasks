@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lodgify/ui/shared/colors.dart';
 import 'package:lodgify/ui/views/tasks/tasks_viewmodel.dart';
 import 'package:lodgify/utils/constants/app_assets.dart';
@@ -16,27 +17,27 @@ class TaskGroupDisplayWidget extends StatelessWidget {
       clipBehavior: Clip.hardEdge,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),
-        color: Colors.white,
+        color: AppColors.whiteColor,
         border: Border.all(
-          color: Colors.grey.shade300,
-          width: 1.5,
+          color: AppColors.greyColor.withOpacity(0.3),
+          width: 1.5.w,
         ),
       ),
       child: ListView.builder(
         controller: viewModel.scrollController,
         shrinkWrap: true,
-        itemCount: viewModel.tasksList.length,
+        itemCount: viewModel.taskGroupsList.length,
         itemBuilder: (context, index) {
-          final group = viewModel.tasksList[index];
+          final group = viewModel.taskGroupsList[index];
           return Container(
             clipBehavior: Clip.hardEdge,
             decoration: BoxDecoration(
               border: Border(
-                bottom: group.isOpen || viewModel.tasksList.last == group
+                bottom: group.isOpen || viewModel.taskGroupsList.last == group
                     ? BorderSide.none
                     : BorderSide(
-                        color: Colors.grey.shade200,
-                        width: 1.5,
+                        color: AppColors.greyColor.withOpacity(0.3),
+                        width: 1.5.w,
                       ),
               ),
             ),
@@ -48,18 +49,22 @@ class TaskGroupDisplayWidget extends StatelessWidget {
                   Text(
                     group.isOpen ? 'Hide' : 'Show',
                     style: TextStyle(
-                      color: Colors.grey.shade500,
+                      color: AppColors.greyColor,
+                      fontSize: 14.sm,
                     ),
                   ),
                   Icon(
                     group.isOpen
-                        ? Icons.keyboard_arrow_down
-                        : Icons.keyboard_arrow_up,
-                    color: Colors.grey.shade500,
+                        ? Icons.keyboard_arrow_up
+                        : Icons.keyboard_arrow_down,
+                    color: AppColors.greyColor,
+                    size: 20.w,
                   ),
                 ],
               ),
-              leading: Image.asset(PngAssets.clipboardImage),
+              leading: viewModel.listOfGroupsWithAllTasksChecked.contains(group)
+                  ? Image.asset(PngAssets.clipboardDoneImage)
+                  : Image.asset(PngAssets.clipboardImage),
               onExpansionChanged: (value) {
                 viewModel.updatedValue(value, index);
               },
@@ -68,16 +73,16 @@ class TaskGroupDisplayWidget extends StatelessWidget {
                 style: TextStyle(
                   color:
                       viewModel.listOfGroupsWithAllTasksChecked.contains(group)
-                          ? Colors.green
-                          : Colors.black,
-                  fontSize: 16.0,
+                          ? AppColors.leafColor
+                          : AppColors.blackColor,
+                  fontSize: 16.0.sm,
                   fontWeight: FontWeight.w500,
                 ),
               ),
               children: group.tasks!
                   .map(
                     (e) => ListTile(
-                      shape: Border.all(color: Colors.white),
+                      shape: Border.all(color: AppColors.whiteColor),
                       leading: Checkbox(
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(4),
@@ -90,9 +95,9 @@ class TaskGroupDisplayWidget extends StatelessWidget {
                       ),
                       title: Text(
                         e.description ?? 'No title available',
-                        style: const TextStyle(
-                          color: Colors.black,
-                          fontSize: 16.0,
+                        style: TextStyle(
+                          color: AppColors.blackColor,
+                          fontSize: 16.0.sm,
                           fontWeight: FontWeight.w500,
                         ),
                       ),

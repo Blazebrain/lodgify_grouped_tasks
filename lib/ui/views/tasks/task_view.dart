@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lodgify/ui/shared/colors.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:stacked/stacked.dart';
@@ -16,79 +17,78 @@ class TasksView extends StatelessWidget {
       viewModelBuilder: () => TasksViewModel(),
       onModelReady: (viewModel) => viewModel.setUp(),
       builder: (context, viewModel, child) {
-        return Scaffold(
-          backgroundColor: Colors.grey[300],
-          body: viewModel.isBusy
-              ? Center(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
-                      CircularProgressIndicator(
-                        color: AppColors.leafColor,
-                      ),
-                      SizedBox(height: 16),
-                      Text(
-                        'Loading tasks...',
-                        style: TextStyle(
-                          fontWeight: FontWeight.w500,
-                          fontSize: 20,
+        return SafeArea(
+          child: Scaffold(
+            backgroundColor: AppColors.backgroundColor,
+            body: viewModel.isBusy
+                ? Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const CircularProgressIndicator(
+                          color: AppColors.leafColor,
                         ),
-                      ),
-                    ],
-                  ),
-                )
-              : Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 24, vertical: 24),
-                  child: Align(
-                    alignment: Alignment.center,
-                    child: Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(16),
-                        color: Colors.white,
-                        border: Border.all(
-                          color: Colors.grey,
-                          width: 1.5,
+                        SizedBox(height: 16.h),
+                        Text(
+                          'Loading tasks...',
+                          style: TextStyle(
+                            fontWeight: FontWeight.w500,
+                            fontSize: 20.sm,
+                          ),
                         ),
-                      ),
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 24,
-                        vertical: 32,
-                      ),
-                      child: SingleChildScrollView(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 24),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  const Padding(
-                                    padding: EdgeInsets.all(8.0),
-                                    child: Text(
-                                      'Lodgify Grouped Tasks',
-                                      style: TextStyle(
-                                        fontSize: 20.0,
-                                        fontWeight: FontWeight.w800,
+                      ],
+                    ),
+                  )
+                : Padding(
+                    padding:
+                        EdgeInsets.symmetric(horizontal: 24.w, vertical: 24.h),
+                    child: Align(
+                      alignment: Alignment.center,
+                      child: Container(
+                        clipBehavior: Clip.hardEdge,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(16.r),
+                          color: AppColors.whiteColor,
+                          border: Border.all(
+                            color: AppColors.greyColor,
+                            width: 1.5.w,
+                          ),
+                        ),
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 24.w,
+                          vertical: 32.h,
+                        ),
+                        child: SingleChildScrollView(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Padding(
+                                padding: EdgeInsets.symmetric(horizontal: 12.w),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsets.all(8.0.r),
+                                      child: Text(
+                                        'Lodgify Grouped Tasks',
+                                        style: TextStyle(
+                                          fontSize: 16.0.sm,
+                                          fontWeight: FontWeight.w800,
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                  const SizedBox(height: 16),
-                                  SizedBox(
-                                    width: size.width - 144,
-                                    child: Stack(
+                                    SizedBox(height: 4.h),
+                                    Stack(
                                       children: [
                                         LinearPercentIndicator(
-                                          lineHeight: 24.0,
+                                          lineHeight: 24.0.h,
                                           animateFromLastPercent: true,
                                           percent: viewModel
                                               .progressValueInPercentage,
                                           barRadius: const Radius.circular(16),
-                                          backgroundColor: Colors.green[100],
-                                          progressColor:
-                                              const Color(0xFF00B797),
+                                          backgroundColor: AppColors.leafColor
+                                              .withOpacity(0.2),
+                                          progressColor: AppColors.leafColor,
                                         ),
                                         Positioned(
                                           left: viewModel
@@ -96,33 +96,33 @@ class TasksView extends StatelessWidget {
                                                   0.05
                                               ? viewModel
                                                       .progressValueInPercentage *
-                                                  (size.width - 250)
-                                              : 40,
+                                                  (size.width - 180.w)
+                                              : 40.w,
                                           child: Text(
                                             '${viewModel.progressValue.toInt()}%',
-                                            style: const TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 16.0,
+                                            style: TextStyle(
+                                              color: AppColors.whiteColor,
+                                              fontSize: 16.0.sm,
                                               fontWeight: FontWeight.w600,
                                             ),
                                           ),
                                         )
                                       ],
                                     ),
-                                  ),
-                                ],
+                                  ],
+                                ),
                               ),
-                            ),
-                            const SizedBox(height: 32),
-                            TaskGroupDisplayWidget(
-                              viewModel: viewModel,
-                            )
-                          ],
+                              SizedBox(height: 16.h),
+                              TaskGroupDisplayWidget(
+                                viewModel: viewModel,
+                              )
+                            ],
+                          ),
                         ),
                       ),
                     ),
                   ),
-                ),
+          ),
         );
       },
     );

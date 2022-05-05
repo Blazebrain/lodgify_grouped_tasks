@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:window_size/window_size.dart';
 
@@ -29,10 +30,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Lodgify Grouped Tasks',
-      home: const TasksView(),
-      navigatorKey: StackedService.navigatorKey,
+    return ScreenUtilInit(
+      designSize: const Size(414, 896),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Lodgify Grouped Tasks',
+        home: const TasksView(),
+        navigatorKey: StackedService.navigatorKey,
+      ),
     );
   }
 }

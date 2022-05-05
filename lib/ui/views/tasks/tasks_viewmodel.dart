@@ -11,7 +11,7 @@ class TasksViewModel extends BaseViewModel {
   final log = getLogger('TasksViewModel');
   final _tasksService = locator<ITasks>();
 
-  List<TasksGroup> tasksList = [];
+  List<TasksGroup> taskGroupsList = [];
   List<TasksGroup> listOfGroupsOpenedGroups = [];
   List<TasksGroup> listOfGroupsWithAllTasksChecked = [];
 
@@ -34,9 +34,14 @@ class TasksViewModel extends BaseViewModel {
   /// immediately the page comes up
   ///
   Future<void> runTasks() async {
-    tasksList = await _tasksService.getTasks();
-    getSumOfAllTasks(tasksList);
-    getInitialProgressBarValue(tasksList);
+    // First, fetch the list of TasksGroups from the TaskService
+    taskGroupsList = await _tasksService.getTasks();
+
+    // Next, get the sum of all the tasks
+    getSumOfAllTasks(taskGroupsList);
+
+    // Lastly, get the initial value for the progress bar
+    getInitialProgressBarValue(taskGroupsList);
   }
 
   /// Get the sum of all the task values for all the groups
@@ -132,7 +137,7 @@ class TasksViewModel extends BaseViewModel {
   }
 
   void updatedValue(bool? value, index) {
-    tasksList[index].isOpen = value ?? false;
+    taskGroupsList[index].isOpen = value ?? false;
     notifyListeners();
   }
 
