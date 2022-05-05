@@ -41,7 +41,9 @@ For a project to be scalable, readable and maintanable, separation of concern is
 ## To run the app:
 - Fork the repo.
 - Clone the forked repo to your local machine
-- Open up the cloned folder in
+- Open up the cloned folder in your code editor
+- Run the command `flutter pub get` to get dependencies.
+- Build and run the application with the command `flutter run`.
 ## To Contribute:
 - Fork the repo.
 - Clone your forked repo.
