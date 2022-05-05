@@ -3,12 +3,12 @@
 Lodgify Grouped Tasks is a product offered by Lodgify, a company focused on building direct channel technology which empowers vacation rental owners and property managers to create a professional website and grow direct bookings, free from commissions. 
 
 ## Brief Desciption
-Lodgify Grouped Tasks is built to enable the smooth coordination and management of assigned tasks within Lodgify. Supported by a robust API endpoint, it fetches a list of tasks which as been laid down in a particular time period. The edpoint returns the tasks in various states: Completed and Uncompleted Tasks. It has a progress loader which displays the current state of the Task Manager, taking the current state of all the tasks into consideration. When a task is marked done, it updates the state of the loader and increases it's value. The scalar value for this increase is gotten by gettingthe normalized value for the increase.
+Lodgify Grouped Tasks is built to enable the smooth coordination and management of assigned tasks within Lodgify. Supported by a robust API endpoint, it fetches a list of tasks which as been laid down in a particular time period. The endpoint returns the tasks in various states: Completed and Uncompleted Tasks. It has a progress loader which displays the current state of the Task Manager, taking the current state of all the tasks into consideration. When a task is marked done, it updates the state of the loader and increases it's value. The scalar value for this increase is gotten by gettingthe normalized value for the increase.
 
-## Architectural Pattern used
-The codebase follows the MVVM architectural pattern, which ensures appropriate separation of concerns with the codebase. The MVVM here stands for Model - View - ViewModel. In this architectural pattern, the business logic guiding the various features for the product is placed into the ViewModel, the View would contain the UI code with little to no logic with it files, lastly the Models is used to convert the raw data coming from the endpoint into structured data objects that can be used within the application. 
+## Architectural Pattern Used
+The codebase follows the MVVM architectural pattern, which ensures appropriate separation of concerns with the codebase. The MVVM here stands for Model - View - ViewModel. In this architectural pattern, the business logic guiding the various features for the product is placed into the ViewModel, the View would contain the UI code with little to no logic with it files. Lastly, the Models are used to convert the raw data coming from the endpoint into structured data objects that can be used within the application. 
 
-## Why MMVM? 
+## Why MVVM? 
 For a project to be scalable, readable and maintanable, separation of concern is a key factor for consideration. From the way external data is fetch to the way it's setup, and lastly consumed within the view files. Separation of concerns is a key principle when building maintanable and scalable codebases. Since Lodgify Group Taks is built to last long and be highly maintanable, with the prospect of adding new features in the nearest future, MVVM comes out as te best architectural principle to achieve this task
 
 ## Folder Structure
