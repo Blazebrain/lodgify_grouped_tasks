@@ -30,13 +30,12 @@ For a project to be scalable, readable and maintanable, separation of concern is
   - [stacked_generator](https://pub.dev/packages/stacked_generator): Stacked Generator allows us run the build runner in order to generate files based on annotations.
 
 ## Key things to note
-  - The Guiding Formula to get the normalized value for the progress: 
-   
-    Nt = Vt * 100 / ∑(Vt)
-        Where :
-            Nt = normalizedValue
-            Vt = taskValue
-            ∑(Vt) = Sum of all tasksValue
+  - The Guiding Formula to get the normalized value for the progress:  
+    Nt = Vt * 100 / ∑(Vt)    
+        Where :  
+          Nt = normalizedValue  
+          Vt = taskValue  
+          ∑(Vt) = Sum of all tasksValue
 
         
 ## To run the app:
