@@ -19,7 +19,7 @@ For a project to be scalable, readable and maintanable, separation of concern is
     - ui: The UI folder contains the views and the shared components folder. These shared componennt may include reuasable widgets, snackbars, bottomsheets etc.
     - utils: The Utils folder contains files that perform specific task within the codebase, from api_assets to enums etc.
 
-## Tools/Pacakges used
+## Tools/Packages used
   - [dio](https://pub.dev/packages/dio): The Dio packages handles network connection to external APIs. It enables us receive data from API endpoints and make use of these data within the application.
   - [flutter_screenutil](https://pub.dev/packages/flutter_screenutil): Flutter Screenutil enhances responsiveness within the mobile application.
   - [logger](https://pub.dev/packages/logger): Logger provides a cleaner and smoother way to logging important information within the application.
